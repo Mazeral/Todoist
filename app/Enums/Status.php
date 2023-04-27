@@ -6,4 +6,7 @@ class Status extends Enum
 {
     private const DONE = "done";
     private const TODO = "todo";
+    protected $fillable = [
+    'title','text','status'
+    ];
 }
