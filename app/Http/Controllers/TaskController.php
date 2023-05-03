@@ -8,6 +8,9 @@ class TaskController extends Controller
 {
     //There are all functions in the end, they just make the code
     //look bette when you are writing
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function getTasks($id)
     {
         $user = User::findOrFail($id);

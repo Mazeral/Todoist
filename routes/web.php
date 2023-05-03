@@ -16,23 +16,52 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get(
+    '/', function () {
+        return Inertia::render(
+            'Welcome', [
+            'canLogin' => Route::has('login'),
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+            ]
+        );
+    }
+);
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get(
+    '/dashboard', function () {
+        return Inertia::render('Dashboard');
+    }
+)->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+Route::middleware('auth')->group(
+    function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    }
+);
+Route::get(
+    '/home', function () {
+        if(/*Is authenticaten*/ Auth::check()) {
+            /*Show the proper things*/
+            Inertia::render('HomeView', $props);
+        }
+        else /*redirect to the sign in or singup page, make it global*/
+        {
 
+        }
+    }
+);
+Route::get(
+    '/profile', function () {
+        /*If the user is authenticated, show the profile page, else redirect*/
+    }
+);
+Route::fallback(
+    function () {
+        return redirect('/home');
+    }
+);
 require __DIR__.'/auth.php';
