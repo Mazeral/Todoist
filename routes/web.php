@@ -18,6 +18,7 @@ use Inertia\Inertia;
 
 Route::get(
     '/', function () {
+        sleep(2);
         return Inertia::render(
             'Welcome', [
             'canLogin' => Route::has('login'),
@@ -31,6 +32,7 @@ Route::get(
 
 Route::get(
     '/dashboard', function () {
+        sleep(2);
         return Inertia::render('Dashboard');
     }
 )->middleware(['auth', 'verified'])->name('dashboard');
