@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Models\User;
 class TaskController extends Controller
 {
     //There are all functions in the end, they just make the code
     //look bette when you are writing
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     public function getTasks($id)
