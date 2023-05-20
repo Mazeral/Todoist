@@ -73,4 +73,10 @@ Route::get(
         return inertia('HomePage');
     }
 );
+//Route for the register card!!
+Route::get(
+    '/RegisterTest', function () {
+        return inertia('RegisterTest');
+    }
+);
 require __DIR__.'/auth.php';

@@ -1,26 +1,33 @@
+<script setup></script>
+
 <template>
-    <v-form @submit.prevent="submitForm">
-        <v-text-field
-            v-model="email"
-            label="Email"
-            type="email"
-            required
-        ></v-text-field>
-        <v-text-field
-            v-model="username"
-            label="Username"
-            required
-        ></v-text-field>
-        <v-text-field
-            v-model="password"
-            :type="passwordFieldType"
-            label="Password"
-            :append-icon="
-                passwordFieldType === 'password' ? 'mdi-eye' : 'mdi-eye-off'
-            "
-            @click:append="switchVisibility"
-            required
-        ></v-text-field>
-        <v-btn type="submit" color="primary">Register</v-btn>
+    <v-form>
+        <v-container fill-height-fluid class="d-flex align-center justify-center">
+            <v-row justify="center">
+                <v-col justify="center" align="center" cols="6">
+                    <v-text-field
+                        label="Email"
+                        type="email"
+                        required
+                    ></v-text-field>
+                    <v-text-field
+                        label="Username"
+                        type="text"
+                        required
+                    ></v-text-field>
+                    <v-text-field
+                        required
+                        label="Password"
+                        type="password"
+                    ></v-text-field>
+                    <v-text-field
+                        required
+                        label="Confirm Password"
+                        type="password"
+                    ></v-text-field>
+                    <v-btn color="primary">Register</v-btn>
+                </v-col>
+            </v-row>
+        </v-container>
     </v-form>
 </template>
