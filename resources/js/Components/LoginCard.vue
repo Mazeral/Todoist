@@ -1,5 +1,5 @@
+<!-- Starting point for the login card, not a comppleted one! -->
 <template>
-    <v-container>
         <v-card>
             <div
                 class="d-flex align-center justify-center"
@@ -32,5 +32,4 @@
                 </v-sheet>
             </div>
         </v-card>
-    </v-container>
 </template>

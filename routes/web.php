@@ -67,4 +67,10 @@ Route::fallback(
         return redirect('/home');
     }
 );
+//Routes for testing the pages!
+Route::get(
+    '/HomePage', function () {
+        return inertia('HomePage');
+    }
+);
 require __DIR__.'/auth.php';
