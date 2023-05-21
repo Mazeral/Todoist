@@ -2,7 +2,7 @@
 
 <template>
     <v-form>
-        <v-container fill-height-fluid class="d-flex align-center justify-center">
+        <v-container fill-height class="d-flex align-center justify-center">
             <v-row justify="center">
                 <v-col justify="center" align="center" cols="6">
                     <v-text-field
