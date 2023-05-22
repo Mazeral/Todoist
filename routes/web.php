@@ -79,4 +79,19 @@ Route::get(
         return inertia('RegisterTest');
     }
 );
+Route::get(
+    '/Tasktest', function () {
+        return inertia('Task');
+    }
+);
+Route::get(
+    '/profiletest', function () {
+        return inertia('Profile');
+    }
+);
+Route::get(
+    '/footertest', function () {
+        return inertia('Footer');
+    }
+);
 require __DIR__.'/auth.php';
