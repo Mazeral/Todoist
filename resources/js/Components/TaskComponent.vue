@@ -1,8 +1,8 @@
 <template>
     <v-container fluid>
         <v-row>
-            <v-col cols="12" sm="6" md="4" v-for="task in tasks" :key="task.id">
-                <v-card>
+            <v-col v-for="task in tasks" :key="task.id">
+                <v-card class="border">
                     <v-card-title>
                         <v-icon :color="task.status.color">
                             {{ task.status.icon }}

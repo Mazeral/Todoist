@@ -81,7 +81,7 @@ Route::get(
 );
 Route::get(
     '/Tasktest', function () {
-        return inertia('Task');
+        return inertia('Tasks');
     }
 );
 Route::get(
