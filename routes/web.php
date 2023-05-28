@@ -29,13 +29,6 @@ Route::get(
         );
     }
 );
-//Route for redering the sign in page:
-Route::get('login', [LoginController::class,'create'])->name('login');
-
-//Route for signing in
-Route::post('login', [LoginController::class,'store']);
-//Route for signing up
-Route::post('register', [RegisterController::class,'create']);
 //Route for the task lists
 Route::get('tasks', [TaskController::class,'getTasks']);
 //Post request for adding a task, another for editing edit, last one for deleting
@@ -94,4 +87,12 @@ Route::get(
         return inertia('Footer');
     }
 );
+//Route for rendering the RegisterPage
+Route::get(
+    'RegisterPage', function () {
+        return inertia('RegisterPage');
+
+    }
+);
+Route::post('register', [ProfileController::class,"store"])->name("profile.store");
 require __DIR__.'/auth.php';

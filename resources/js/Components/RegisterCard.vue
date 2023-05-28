@@ -1,17 +1,17 @@
 <script setup>
 import { ref, reactive } from "vue";
-import Inertia from from "@inertiajs/inertia"
+import { Inertia } from "@inertiajs/inertia";
 let form = reactive({
     email: "",
     username: "",
     password: "",
 });
 let confirm = ref("");
-const submit = () =>{
-    if(form.passowrd === confirm.value){
-    Inertia.post("/register",form);
+const submit = () => {
+    if (form.passowrd === confirm.value) {
+        Inertia.post("/register", form);
     }
-}
+};
 </script>
 
 <template>
@@ -38,12 +38,13 @@ const submit = () =>{
                         type="password"
                     ></v-text-field>
                     <v-text-field
-                        v-model="confirm.value"
+                        v-model="confirm"
                         required
                         label="Confirm Password"
                         type="password"
                     ></v-text-field>
                     <v-btn color="primary">Register</v-btn>
+                    <p><Link href="/HomePage">Return to Home Page</Link></p>
                 </v-col>
             </v-row>
         </v-container>
