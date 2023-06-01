@@ -29,4 +29,25 @@ Route::get(
         );
     }
 );
+
+//Route for the home page of the app
+Route::get(
+    "HomePage", function () {
+        return inertia("HomePage");
+    }
+);
+
+//Route for the register page
+Route::get(
+    'RegisterPage', function () {
+        return inertia("RegisterPage");
+    }
+);
+
+
+//Route for the POST request of the sign in
+Route::post(
+    'HomePage', function () {
+    }
+);
 require __DIR__.'/auth.php';

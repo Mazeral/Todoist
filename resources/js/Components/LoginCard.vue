@@ -18,13 +18,19 @@
                     <a href="#" class="text-body-2 font-weight-regular"
                         >Forgot Password?</a
                     >
-                    <v-btn type="submit" color="primary" block class="mt-2"
+                    <v-btn
+                        type="submit"
+                        method="post"
+                        color="primary"
+                        block
+                        class="mt-2"
                         >Sign in</v-btn
                     >
                 </v-form>
                 <div class="mt-2">
                     <p class="text-body-2">
-                        Don't have an account? <Link href="/RegisterPage">Sign Up</Link>
+                        Don't have an account?
+                        <Link href="/RegisterPage">Sign Up</Link>
                     </p>
                 </div>
             </v-sheet>
@@ -36,10 +42,10 @@
 import { useForm } from "@inertiajs/vue3";
 import { reactive } from "vue";
 let form = reactive({
-    email : '',
-    password : ''
+    email: "",
+    password: "",
 });
-let submit = () =>{
-    Inertia.post('/signin',signin);
-}
+let submit = () => {
+    Inertia.post("/signin", signin);
+};
 </script>

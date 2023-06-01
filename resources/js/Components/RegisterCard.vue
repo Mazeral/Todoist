@@ -43,7 +43,7 @@ const submit = () => {
                         label="Confirm Password"
                         type="password"
                     ></v-text-field>
-                    <v-btn color="primary">Register</v-btn>
+                    <v-btn color="primary" method="post">Register</v-btn>
                     <p><Link href="/HomePage">Return to Home Page</Link></p>
                 </v-col>
             </v-row>
