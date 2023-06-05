@@ -8,8 +8,10 @@ let form = reactive({
 });
 let confirm = ref("");
 let submit = () => {
-    if (form.passowrd === confirm.value) {
-        Inertia.post("/UserCreate", form);
+    if (form.password === confirm.value) {
+        //The "register", or in other words, the first parameter is the end point
+        //on the back end
+        Inertia.post("register", form);
     }
 };
 </script>

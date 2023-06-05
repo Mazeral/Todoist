@@ -33,6 +33,7 @@ Route::get(
 //Route for the home page of the app
 Route::get(
     "HomePage", function () {
+        sleep(2);
         return inertia("HomePage");
     }
 );
@@ -47,10 +48,10 @@ Route::get(
 
 //Route for the POST request of the sign in
 Route::post(
-    "signin", function (Request $request) {
-        dd($request);
-    }
+    "signin", [UserController::class,"signin"]
 );
 
 //Route for creating a new user:
+Route::post('register', [UserController::class,"store"]);
+
 require __DIR__.'/auth.php';

@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        // Show all the users (for tinker)
+        return User::all();
     }
 
     /**
