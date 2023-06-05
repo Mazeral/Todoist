@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use Inertia\Inertia;
-
+use App\Models\User;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,7 +47,10 @@ Route::get(
 
 //Route for the POST request of the sign in
 Route::post(
-    'HomePage', function () {
+    "signin", function (Request $request) {
+        dd($request);
     }
 );
+
+//Route for creating a new user:
 require __DIR__.'/auth.php';
