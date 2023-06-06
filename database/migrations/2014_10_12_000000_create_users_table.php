@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string('password');
                 $table->rememberToken();
                 $table->timestamps();
-                $table->unsignedBigInteger('task_id');
+                $table->unsignedBigInteger('task_id')->nullable();
             }
         );
     }
