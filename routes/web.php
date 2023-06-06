@@ -54,4 +54,7 @@ Route::post(
 //Route for creating a new user:
 Route::post('register', [UserController::class,"store"]);
 
+//Route for previewing the tasks of a user
+Route::get('tasks', [UserController::class,"getTasks"]);
+
 require __DIR__.'/auth.php';

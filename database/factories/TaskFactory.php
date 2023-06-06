@@ -19,7 +19,7 @@ class TaskFactory extends Factory
         return [
             //
             'name' => fake()->name(),
-            'status' => fake()->randomElement(['done','todo']),
+            'status' => fake()->randomElement(['Pending','Completed']),
            'text'=> fake()->paragraph(),
         ];
     }

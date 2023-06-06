@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 /*Created the UserContorller funciton instead of the Profile
  *
  *
@@ -18,6 +17,18 @@ class UserController extends Controller
     {
         // Show all the users (for tinker)
         return User::all();
+    }
+
+    /*
+    *
+    * Get the tasks associated with the user*/
+    public function getTasks()
+    {
+        //getting the Authenticated user, btw Auth is global class!
+        $user = Auth::user();
+        $tasks= $user->tasks;
+        //Render the view that has the tasks, then pass the information
+        return inertia("TasksView", ['tasks'=>$tasks]);
     }
 
     /**
@@ -84,7 +95,7 @@ class UserController extends Controller
     {
         $credentials = $req->only('email', 'password');
         if(Auth::attempt($credentials)) {
-            return redirect("HomePage");
+            return redirect("tasks");
         }
     }
 }
