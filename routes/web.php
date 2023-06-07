@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\RedirectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,29 +34,28 @@ Route::get(
 
 //Route for the home page of the app
 Route::get(
-    "HomePage", function () {
-        sleep(2);
-        return inertia("HomePage");
-    }
-);
+    "HomePage", [RedirectController::class,"checkAndRedirect"]
+)->name('HomePage');
 
 //Route for the register page
 Route::get(
     'RegisterPage', function () {
         return inertia("RegisterPage");
     }
-);
+)->name('RegisterPage');
 
 
 //Route for the POST request of the sign in
 Route::post(
     "signin", [UserController::class,"signin"]
-);
+)->name('signin');
 
 //Route for creating a new user:
-Route::post('register', [UserController::class,"store"]);
+Route::post('register', [UserController::class,"store"])->name('register');
 
 //Route for previewing the tasks of a user
-Route::get('tasks', [UserController::class,"getTasks"]);
+Route::get('tasks', [UserController::class,"getTasks"])->name('tasks');
 
+//Route to signout
+Route::post('signout', [AuthController::class,'signout'])->name('signout');
 require __DIR__.'/auth.php';

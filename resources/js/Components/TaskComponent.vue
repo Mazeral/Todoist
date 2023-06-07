@@ -1,8 +1,6 @@
 <template>
-    <v-container fluid>
-        <v-row>
-            <v-col cols="4">
-                <v-card class="border">
+            <v-col cols="3">
+                <v-card class="border rounded-shaped">
                     <v-card-title>
                         <v-icon
                             :icon="iconName()"
@@ -22,8 +20,6 @@
                     <v-card-text> {{ text }} </v-card-text>
                 </v-card>
             </v-col>
-        </v-row>
-    </v-container>
 </template>
 
 <script setup>

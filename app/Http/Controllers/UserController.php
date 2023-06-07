@@ -26,7 +26,10 @@ class UserController extends Controller
     {
         //getting the Authenticated user, btw Auth is global class!
         $user = Auth::user();
-        $tasks= $user->tasks;
+        if($user) {
+            $tasks= $user->tasks;
+        } else { return redirect()->route('HomePage');
+        }
         //Render the view that has the tasks, then pass the information
         return inertia("TasksView", ['tasks'=>$tasks]);
     }
