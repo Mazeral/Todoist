@@ -8,6 +8,7 @@ use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,4 +59,6 @@ Route::get('tasks', [UserController::class,"getTasks"])->name('tasks');
 
 //Route to signout
 Route::post('signout', [AuthController::class,'signout'])->name('signout');
+
+//Route to filter the tasks
 require __DIR__.'/auth.php';

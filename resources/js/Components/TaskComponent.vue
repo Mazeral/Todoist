@@ -1,25 +1,18 @@
 <template>
-            <v-col cols="3">
-                <v-card class="border rounded-shaped">
-                    <v-card-title>
-                        <v-icon
-                            :icon="iconName()"
-                            :color= "changeColor()"
-                            class="mb-2"
-                        >
-                        </v-icon>
-                        {{ name }}
-                        <v-spacer></v-spacer>
-                        <v-btn
-                            @click="changeStatus(task)"
-                            :color="changeColor()"
-                        >
-                            {{ status }}
-                        </v-btn>
-                    </v-card-title>
-                    <v-card-text> {{ text }} </v-card-text>
-                </v-card>
-            </v-col>
+    <v-col cols="3">
+        <v-card class="border rounded-shaped">
+            <v-card-title>
+                <v-icon :icon="iconName()" :color="changeColor()" class="mb-2">
+                </v-icon>
+                {{ name }}
+                <v-spacer></v-spacer>
+                <v-btn @click="changeStatus(task)" :color="changeColor()">
+                    {{ status }}
+                </v-btn>
+            </v-card-title>
+            <v-card-text> {{ text }} </v-card-text>
+        </v-card>
+    </v-col>
 </template>
 
 <script setup>

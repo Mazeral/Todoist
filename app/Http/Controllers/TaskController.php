@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
     //There are all functions in the end, they just make the code
@@ -22,7 +23,7 @@ class TaskController extends Controller
     {
         //Finding the user and the task
         $user = User::findOrFail($user_id);
-        $task = Task::findOrFail($task_id)
+        $task = Task::findOrFail($task_id);
         //If a given request exists: change it, else don't do anything
         if(request($title)) {
             $task->title = request($title);
@@ -33,7 +34,7 @@ class TaskController extends Controller
         if(request($status)) {
             $task->status = request($status);
         }
-        return {"Successfully updated the task"};
+        return "Successfully updated the task";
     }
 
     /*Function to create a task*/
@@ -58,5 +59,13 @@ class TaskController extends Controller
     {
         $user = User::findOrFail($user_id);
         $user->tasks()->delete();
+    }
+
+    //Function to return the tasks that matched the pattern:
+    public function filterTasks(Request $req)
+    {
+        $user = Auth::user();
+        $tasks = $user->tasks()->where($req->all())->get();
+        return inertia('tasks', ['tasks'=>$tasks]);
     }
 }
