@@ -1,7 +1,7 @@
 <script setup>
 import TaskComponent from "../Components/TaskComponent.vue";
 import MainLayout from "../Layouts/MainLayout.vue";
-import { defineProps, ref } from "vue";
+import { defineProps, ref, watch } from "vue";
 let tasks = defineProps({
     tasks: Array,
 });
@@ -12,11 +12,12 @@ let foo = () => {
     console.log(testvar.value);
 };
 let filterValue = ref("default value, nothing changed!");
+watch(testvar);
 </script>
 
 <template>
     <v-app>
-        <MainLayout v-slot="slotProps">
+        <MainLayout>
             <v-container>
                 <!-- <div>{{testvar}}</div> -->
                 <v-row class="justify-center">
@@ -39,7 +40,9 @@ let filterValue = ref("default value, nothing changed!");
 of the variables inside the object or the array of the child
 component!!!-->
                     <TaskComponent
+                        v-model="testvar"
                         v-for="task in testvar"
+                        :filter="filterValue"
                         :key="task.id"
                         :name="task.name"
                         :status="task.status"

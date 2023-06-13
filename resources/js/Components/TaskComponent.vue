@@ -1,5 +1,5 @@
 <template>
-    <v-col cols="3">
+    <v-col cols="3" v-if="filtering()">
         <v-card class="border rounded-shaped">
             <v-card-title>
                 <v-icon :icon="iconName()" :color="changeColor()" class="mb-2">
@@ -24,6 +24,7 @@ let props = defineProps({
     id: Number,
     status: String,
     text: String,
+    filter: String,
 });
 //Function to return the proper icon for the task
 function iconName() {
@@ -36,4 +37,7 @@ function changeColor() {
     if (props.status == "Pending") return "orange";
     else if (props.status == "Completed") return "green";
 }
+let filtering = () => {
+    return props.name.toLowerCase().includes(props.filter.toLowerCase());
+};
 </script>
