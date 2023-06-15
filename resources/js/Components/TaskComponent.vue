@@ -31,23 +31,50 @@ let statusUpdate = () => {
         preserveState: true,
     });
 };
+//creating a varaible to choose if we are going to view the form or not
+let isForm = ref(false);
+let update = () => {
+    isForm.value = !isForm.value;
+};
 </script>
 
 <template>
     <v-col cols="3" v-if="filtering()">
-        <v-card class="border rounded-shaped">
-            <v-card-title>
+        <v-card class="border rounded-shaped" v-if="!isForm">
+            <v-card-title class="d-flex-inline">
                 <v-icon :icon="iconName()" :color="changeColor()" class="mb-2">
                 </v-icon>
                 {{ name }}
+                <v-btn
+                    icon="mdi-pencil"
+                    class="ml-3"
+                    @click.prevent="update()"
+                ></v-btn>
                 <v-spacer></v-spacer>
                 <v-form @submit.prevent="statusUpdate()">
-                    <v-btn :color="changeColor()" type="submit">
+                    <v-btn :color="changeColor()" type="submit" v-if="!isForm">
                         {{ status }}
                     </v-btn>
                 </v-form>
             </v-card-title>
             <v-card-text> {{ text }} </v-card-text>
+        </v-card>
+        <v-card v-if="isForm">
+            <v-card-title>
+                <v-text-field :label="name"></v-text-field>
+                <v-btn
+                    icon="mdi-cancel"
+                    class="ml-3"
+                    @click.prevent="update()"
+                ></v-btn>
+            </v-card-title>
+            <v-spacer></v-spacer>
+            <v-card-text>
+                <v-text-field :label="text"></v-text-field>
+            </v-card-text>
+            <v-form>
+                <v-btn color="primary"><b>CONFIRM</b></v-btn>
+            </v-form>
         </v-card>
     </v-col>
 </template>
