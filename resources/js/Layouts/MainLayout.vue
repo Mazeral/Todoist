@@ -13,6 +13,9 @@ function logout() {
 function profile() {
     router.get("/profile");
 }
+function tasks() {
+    router.get("/tasks");
+}
 </script>
 <template>
     <!--Multiple v-app elements will result in error,
@@ -22,8 +25,14 @@ function profile() {
             <v-app-bar-nav-icon @click="appear = !appear"> </v-app-bar-nav-icon>
             <v-spacer></v-spacer>
             <v-app-bar-nav-icon
+                v-if="this.$page.url != `/tasks`"
+                icon="mdi-view-module"
+                @click.prevent="tasks()"
+            ></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon
                 icon="mdi-human-greeting-variant"
                 @click="profile"
+                v-if="this.$page.url != `/profile`"
             ></v-app-bar-nav-icon>
             <v-app-bar-nav-icon
                 @click="logout"

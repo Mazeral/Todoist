@@ -36,6 +36,16 @@ let isForm = ref(false);
 let update = () => {
     isForm.value = !isForm.value;
 };
+//A variable to save the new information
+let form = reactive({
+    id: props.id,
+    newName: "",
+    newText: "",
+});
+//A funciton to update the task
+function updateTask() {
+    router.post("/updateTask", form);
+}
 </script>
 
 <template>
@@ -59,22 +69,30 @@ let update = () => {
             </v-card-title>
             <v-card-text> {{ text }} </v-card-text>
         </v-card>
-        <v-card v-if="isForm">
-            <v-card-title>
-                <v-text-field :label="name"></v-text-field>
-                <v-btn
-                    icon="mdi-cancel"
-                    class="ml-3"
-                    @click.prevent="update()"
-                ></v-btn>
-            </v-card-title>
-            <v-spacer></v-spacer>
-            <v-card-text>
-                <v-text-field :label="text"></v-text-field>
-            </v-card-text>
-            <v-form>
-                <v-btn color="primary"><b>CONFIRM</b></v-btn>
-            </v-form>
-        </v-card>
+        <v-sheet v-if="isForm" class="border rounded-shaped">
+            <v-container>
+                <v-row>
+                    <v-text-field
+                        variant="underlined"
+                        v-model="form.newName"
+                        label="New Task Name"
+                    ></v-text-field>
+                </v-row>
+                <v-row>
+                    <v-textarea
+                        label="New Task Text"
+                        v-model="form.newText"
+                    ></v-textarea>
+                </v-row>
+                <v-row class="justify-space-around">
+                    <v-btn @click.prevent="updateTask()" color="primary"
+                        ><b>CONFIRM</b></v-btn
+                    >
+                    <v-btn @click.prevent="update()" color="red"
+                        ><b>CANCEL</b></v-btn
+                    >
+                </v-row>
+            </v-container>
+        </v-sheet>
     </v-col>
 </template>

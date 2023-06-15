@@ -22,4 +22,18 @@ class TaskController extends Controller
             Task::findOrFail($req->id)->update(["status" => "Pending"]);
         }
     }
+    //Update the data of the task
+    public function taskUpdate(Request $req)
+    {
+
+        //if the name is not empty, change the name
+        if($req->newName != "") {
+            Task::findOrFail($req->id)->update(['name'=>$req->newName]);
+        }
+
+        //if the text is not empty, change the text
+        if($req->newText!= "") {
+            Task::findOrFail($req->id)>update(['name'=>$req->newText]);
+        }
+    }
 }

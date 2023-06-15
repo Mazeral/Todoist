@@ -65,4 +65,7 @@ Route::post('statusUpdate', [TaskController::class, 'statusUpdate'])->name('stat
 
 //Route to the user profile page
 Route::get('profile', [UserController::class, 'profile'])->name('profile');
+
+//Route to update the task information
+Route::post('updateTask', [TaskController::class,'taskUpdate'])->name('taskUpdate');
 require __DIR__.'/auth.php';
