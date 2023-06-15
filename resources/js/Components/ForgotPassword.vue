@@ -1,11 +1,11 @@
 <script setup>
 import {reactive} from "vue";
-import Inertia from "@inertiajs/inertia"
+import {router} from "@inertiajs/vue3";
 let form = reactive ({
     email:'';
 })
 const submit = ()=>{
-    Inertia.post("/forgotpassword",form)
+    router.post("/forgotpassword",form)
 }
 </script>
 <template>

@@ -1,12 +1,12 @@
 <script setup>
-import Inertia from "@inertiajs/inertia";
+import { route } from "@inertiajs/vue3`";
 import { reactive } from "vue";
 let form = reactive({
     password: "",
     confirm: "",
 });
 let submit = () => {
-    if (form.password === form.confirm) Inertia.post("/resetpass", form);
+    if (form.password === form.confirm) route.post("/resetpass", form);
 };
 </script>
 <template>

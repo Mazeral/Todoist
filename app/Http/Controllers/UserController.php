@@ -106,4 +106,16 @@ class UserController extends Controller
             return redirect("tasks");
         }
     }
+    public function profile(Request $req)
+    {
+        //How can we get the authenticated user, and his details!
+        if(Auth::user()) {
+            $user = User::findOrFail(Auth::user()->id);
+            return inertia('ProfileView', ['name'=>$user->name,'email'=>$user->email]);
+        }
+        else
+        {
+            to_route("HomePage");
+        }
+    }
 }

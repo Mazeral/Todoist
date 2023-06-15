@@ -14,13 +14,13 @@ function logout() {
 <template>
     <v-app-bar>
         <v-app-bar-nav-icon @click="appear = !appear"> </v-app-bar-nav-icon>
+
         <v-spacer></v-spacer>
-        <v-text-field
-            label="Filter the tasks"
-            class="mt-5 presist-input"
-            v-model="filterValue"
-        ></v-text-field>
+
         <v-app-bar-nav-icon icon="mdi-magnify"></v-app-bar-nav-icon>
+
+        <v-app-bar-nav-icon icon="mdi-face"></v-app-bar-nav-icon>
+
         <v-form @submit.prevent="logout()">
             <v-app-bar-nav-icon
                 icon="mdi-logout"

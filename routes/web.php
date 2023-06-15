@@ -62,4 +62,7 @@ Route::post('signout', [AuthController::class,'signout'])->name('signout');
 
 //Route to change the status of the tasks
 Route::post('statusUpdate', [TaskController::class, 'statusUpdate'])->name('statusUpdate');
+
+//Route to the user profile page
+Route::get('profile', [UserController::class, 'profile'])->name('profile');
 require __DIR__.'/auth.php';

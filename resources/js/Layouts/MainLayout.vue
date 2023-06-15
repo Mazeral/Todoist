@@ -1,15 +1,17 @@
 <script setup>
 import { ref, defineProps } from "vue";
-import { Link } from "@inertiajs/vue3";
-import { Inertia } from "@inertiajs/inertia";
 import NavDrawer from "../Components/NavDrawer.vue";
+import { router } from "@inertiajs/vue3";
 let appear = ref(false);
 let filterInput = ref("");
-async function filter() {
-    await Inertia.post("/tasks" /*The value of the filter*/);
+function filter() {
+    router.post("/tasks" /*The value of the filter*/);
 }
-async function logout() {
-    await Inertia.post("/signout");
+function logout() {
+    router.post("/signout");
+}
+function profile() {
+    router.get("/profile");
 }
 </script>
 <template>
@@ -19,6 +21,10 @@ async function logout() {
         <v-app-bar>
             <v-app-bar-nav-icon @click="appear = !appear"> </v-app-bar-nav-icon>
             <v-spacer></v-spacer>
+            <v-app-bar-nav-icon
+                icon="mdi-human-greeting-variant"
+                @click="profile"
+            ></v-app-bar-nav-icon>
             <v-app-bar-nav-icon
                 @click="logout"
                 icon="mdi-logout"

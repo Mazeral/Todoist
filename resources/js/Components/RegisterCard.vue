@@ -1,6 +1,6 @@
 <script setup>
 import { ref, reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 let form = reactive({
     email: "",
     name: "",
@@ -11,7 +11,7 @@ let submit = () => {
     if (form.password === confirm.value) {
         //The "register", or in other words, the first parameter is the end point
         //on the back end
-        Inertia.post("register", form);
+        router.post("register", form);
     }
 };
 </script>
