@@ -16,7 +16,7 @@ return new class extends Migration
                 $table->id();
                 $table->timestamps();
                 $table->string('name');
-                $table->string('status');
+                $table->string('status'); //Either "Completed" or "Pending"
                 $table->string('text');
                 $table->unsignedBigInteger('user_id');
             }

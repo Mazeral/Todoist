@@ -60,5 +60,6 @@ Route::get('tasks', [UserController::class,"getTasks"])->name('tasks');
 //Route to signout
 Route::post('signout', [AuthController::class,'signout'])->name('signout');
 
-//Route to filter the tasks
+//Route to change the status of the tasks
+Route::post('statusUpdate', [TaskController::class, 'statusUpdate'])->name('statusUpdate');
 require __DIR__.'/auth.php';

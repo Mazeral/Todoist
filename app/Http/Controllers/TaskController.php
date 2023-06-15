@@ -13,59 +13,13 @@ class TaskController extends Controller
     {
         $this->middleware('auth');
     }
-    public function getTasks($id)
+    //Change the value of the the task from pending or completed
+    public function statusUpdate(Request $req)
     {
-        $user = User::findOrFail($id);
-        return user->tasks;
-    }
-    /*function to update the task, depending on the data provided*/
-    public function updateTasks($user_id,$task_id,$title,$text,$status)
-    {
-        //Finding the user and the task
-        $user = User::findOrFail($user_id);
-        $task = Task::findOrFail($task_id);
-        //If a given request exists: change it, else don't do anything
-        if(request($title)) {
-            $task->title = request($title);
+        if(Task::findOrFail($req->id)->status == "Pending") {
+            Task::findOrFail($req->id)->update(["status" => "Completed"]);
+        } else {
+            Task::findOrFail($req->id)->update(["status" => "Pending"]);
         }
-        if(request($text)) {
-            $task->text = request($text);
-        }
-        if(request($status)) {
-            $task->status = request($status);
-        }
-        return "Successfully updated the task";
-    }
-
-    /*Function to create a task*/
-
-    public function setTask($id,$title,$text,$status)
-    {
-        $user = User::findOrFail($id);
-        $task = new Task(['title'=>$title,'text'=>$text,'status'=>$status]);
-        $user->tasks()->save($task);
-    }
-
-    /*Function to delete a task*/
-
-    public function deleteTask($user_id,$task_id)
-    {
-        $user = User::find($user_id);
-        $user->tasks()->whereId($task_id)->delete();
-    }
-
-    /*Function to delete all the tasks*/
-    public function deleteAllTask($user_id)
-    {
-        $user = User::findOrFail($user_id);
-        $user->tasks()->delete();
-    }
-
-    //Function to return the tasks that matched the pattern:
-    public function filterTasks(Request $req)
-    {
-        $user = Auth::user();
-        $tasks = $user->tasks()->where($req->all())->get();
-        return inertia('tasks', ['tasks'=>$tasks]);
     }
 }

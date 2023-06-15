@@ -27,11 +27,16 @@ class UserController extends Controller
         //getting the Authenticated user, btw Auth is global class!
         $user = Auth::user();
         if($user) {
-            $tasks= $user->tasks;
+            $authUser = User::find($user->id);
+            //The paginate function is working, we need more details to make it work just right
+            return inertia(
+                "TasksView",
+                ['tasks'=>$authUser->tasks()->paginate(16)]
+            );
+
         } else { return redirect()->route('HomePage');
         }
         //Render the view that has the tasks, then pass the information
-        return inertia("TasksView", ['tasks'=>$tasks]);
     }
 
     /**

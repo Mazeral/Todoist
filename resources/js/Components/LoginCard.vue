@@ -1,15 +1,14 @@
 <!-- Starting point for the login card, not a comppleted one! -->
 
 <script setup>
-import { useForm } from "@inertiajs/vue3";
 import { reactive } from "vue";
-import { Inertia } from "@inertiajs/inertia";
+import { router } from "@inertiajs/vue3";
 let form = reactive({
     email: "",
     password: "",
 });
 let submit = () => {
-    Inertia.post("/signin", form);
+    router.post("/signin", form);
 };
 </script>
 
