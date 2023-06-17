@@ -38,8 +38,12 @@ let submit = () => {
                 </v-form>
                 <div class="mt-2">
                     <p class="text-body-2">
+                    <p class="text-body-2">
                         Don't have an account?
                         <Link href="/RegisterPage">Sign Up</Link>
+                    </p>
+                    Forgot passowrd?
+                        <Link href="/ForgotPassword">Sign Up</Link>
                     </p>
                 </div>
             </v-sheet>

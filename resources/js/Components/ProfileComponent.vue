@@ -1,30 +1,30 @@
 <script setup>
-const props = defineProps(["name", "email"]);
+import { ref, reactive } from "vue";
+import { router } from "@inertiajs/vue3";
+const props = defineProps([
+    "name",
+    "email",
+    "completedTasks",
+    "pendingTasks",
+    "tasksCount",
+]);
+function deleteAccount() {
+    router.post("userDelete");
+}
+
+//Variables for the check boxes
 </script>
 <template>
     <v-container>
-        <v-row class="justify-center align-center">
-            <v-col cols="8">
-                <v-card>
-                    <v-card-title class="d-flex align-items-center">
-                        <v-avatar inline size="80">
-                            <img
-                                src="https://via.placeholder.com/80"
-                                alt="Profile image"
-                            />
-                        </v-avatar>
-                        <div class="ml-4">
-                            <h3>{{ props.name }}</h3>
-                        </div>
-                        <v-btn icon class="mx-5">
-                            <v-icon icon="mdi-pencil"></v-icon>
-                        </v-btn>
-                    </v-card-title>
-                    <v-card-text>
-                        <p><strong>Email:</strong> {{ props.email }}</p>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
+        <!-- d-flex is for making the elements in the center, but that wont make them in the center the way we want it, thus we make the .text-center  -->
+        <v-sheet class="align-center d-flex text-center justify-center">
+            <!-- the name, the email, the amount of the tasks -->
+            <div>
+                <h1>Name: {{ name }}</h1>
+                <h1>Email: {{ email }}</h1>
+                <h1>Completed Tasks: {{ completedTasks }}</h1>
+                <h1>Total Tasks: {{ tasksCount }}</h1>
+            </div>
+        </v-sheet>
     </v-container>
 </template>

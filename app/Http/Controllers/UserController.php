@@ -111,11 +111,23 @@ class UserController extends Controller
         //How can we get the authenticated user, and his details!
         if(Auth::user()) {
             $user = User::findOrFail(Auth::user()->id);
-            return inertia('ProfileView', ['name'=>$user->name,'email'=>$user->email]);
+            $tasksCount = $user->tasks()->count();
+            $pendingTasks = $user->tasks()->where('status', 'Pending')->count();
+            $completedTasks= $user->tasks()->where('status', 'Completed')->count();
+            return inertia(
+                'ProfileView', ['name'=>$user->name,'email'=>$user->email,'tasksCount' => $tasksCount ,
+                'pendingTasks'=>$pendingTasks,'completedTasks'=>$completedTasks]
+            );
         }
         else
         {
             to_route("HomePage");
         }
+    }
+
+    //Function to delete the user
+    public function userDelete(Request $req)
+    {
+        User::findOrFail(Auth::user()->id)->delete();
     }
 }

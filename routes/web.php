@@ -68,4 +68,17 @@ Route::get('profile', [UserController::class, 'profile'])->name('profile');
 
 //Route to update the task information
 Route::post('updateTask', [TaskController::class,'taskUpdate'])->name('taskUpdate');
+
+//Route to create a new task
+Route::post('taskCreate', [TaskController::class , 'taskCreate'])->name('taskCreate');
+
+//Route to delete the user
+Route::post('userDelete', [UserController::class,'userDelete'])->name('userDelete');
+
+//Route to update the user name, email and password
+// Route::post('userUpdate', [UserController::class,'userUpdate'])->name('userUpdate');
+
+//Routes for forgetting the password:
+// Route::get();
+// Route::post();
 require __DIR__.'/auth.php';

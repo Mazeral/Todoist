@@ -42,7 +42,9 @@ function tasks() {
         </v-app-bar>
         <NavDrawer v-model="appear" />
 
-        <slot :filterValue="filterInput" />
+        <slot
+            :filterValue="filterInput"
+        />
     </v-main>
     <v-footer
         ><v-card

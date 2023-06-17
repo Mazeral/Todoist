@@ -36,4 +36,11 @@ class TaskController extends Controller
             Task::findOrFail($req->id)>update(['name'=>$req->newText]);
         }
     }
+
+    //Create a task that belongs to the User
+    public function taskCreate(Request $req)
+    {
+        //Adding a new task to the authenticated user!
+        User::findOrFail(Auth::user()->id)->tasks()->create(['name'=>$req->name,'text'=>$req->text,'status'=>'Pending']);
+    }
 }
