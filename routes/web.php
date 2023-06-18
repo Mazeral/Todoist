@@ -22,14 +22,7 @@ use App\Http\Controllers\TaskController;
 //route for the main page, mind the status of the user
 Route::get(
     '/', function () {
-        return Inertia::render(
-            'Welcome', [
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
-            ]
-        );
+        return to_route('HomePage');
     }
 );
 

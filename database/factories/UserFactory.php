@@ -17,6 +17,8 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        // To make the dummy data, run : User::factory()->has(Task::factory(100))->create();
+        // This creates a user with 100 tasks!
         return [
 
             'name' => fake()->name(),
