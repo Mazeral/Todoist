@@ -19,6 +19,13 @@ use App\Http\Controllers\TaskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Route to catch all 404 errors and redirect them to HomePage
+Route::fallback(
+    function () {
+        return to_route("HomePage");
+    }
+)->name('fallback');
+
 //route for the main page, mind the status of the user
 Route::get(
     '/', function () {
